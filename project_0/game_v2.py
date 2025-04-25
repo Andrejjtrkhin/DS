@@ -5,6 +5,37 @@
 import numpy as np
 
 
+def binarySearch(number: int = 1) -> int:
+    count = 0
+    
+    predict_number = 50
+    minNum = 1
+    maxNum = 101
+    
+    while(number != predict_number):
+        count += 1
+        if number > predict_number:
+            minNum = predict_number
+            predict_number = (minNum + maxNum) // 2
+        else:
+            maxNum = predict_number
+            predict_number = (minNum + maxNum) // 2
+    return count
+
+
+def binarySearch_2(number: int = 1) -> int:
+    count = 0
+    
+    predict_number = 50
+    
+    while(number != predict_number):
+        count += 1
+        if number > predict_number:
+            predict_number = np.random.randint(predict_number, 101) 
+        else:
+            predict_number = np.random.randint(1, predict_number) 
+    return count
+
 def random_predict(number: int = 1) -> int:
     """Рандомно угадываем число
 
@@ -47,4 +78,4 @@ def score_game(random_predict) -> int:
 
 if __name__ == "__main__":
     # RUN
-    score_game(random_predict)
+    score_game(binarySearch_2)
